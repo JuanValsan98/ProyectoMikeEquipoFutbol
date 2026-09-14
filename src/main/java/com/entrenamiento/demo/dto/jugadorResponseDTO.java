@@ -1,12 +1,9 @@
 package com.entrenamiento.demo.dto;
 
-import lombok.Data;
-
-@Data 
-public class jugadoresRequestDTO {
+public class jugadorResponseDTO {
 
     private String name;
 
-
+    private Long id;
     
 }
