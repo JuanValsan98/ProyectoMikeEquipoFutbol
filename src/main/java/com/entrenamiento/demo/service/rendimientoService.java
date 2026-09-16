@@ -52,6 +52,8 @@ double resultado = (request.getPotenciaDeTiro() * 0.20)
 
     }
 
+    public rendim
+
 
     
 }
