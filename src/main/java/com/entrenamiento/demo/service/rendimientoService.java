@@ -67,7 +67,7 @@ double resultado = (request.getPotenciaDeTiro() * 0.20)
         for (rendimientojugador rendimientoJugador : todos) {
             jugador jugador = rendimientoJugador.getJugador();
             if (!agrupadoPorJugador.containsKey(jugador)) {
-                agrupadoPorJugador.put(jugador, new ArrayList());
+                agrupadoPorJugador.put(jugador, new ArrayList<>());
             
             }
             agrupadoPorJugador.get(jugador).add(rendimientoJugador);

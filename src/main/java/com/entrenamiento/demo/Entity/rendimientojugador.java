@@ -1,7 +1,5 @@
 package com.entrenamiento.demo.Entity;
 
-import com.entrenamiento.demo.Entity.jugador;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
