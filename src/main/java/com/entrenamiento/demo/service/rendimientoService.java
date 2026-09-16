@@ -4,6 +4,9 @@ import com.entrenamiento.demo.dto.rendimientojugadorRequestDTO;
 import com.entrenamiento.demo.dto.rendimientojugadorResponseDTO;
 
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import com.entrenamiento.demo.Entity.jugador;
@@ -52,8 +55,11 @@ double resultado = (request.getPotenciaDeTiro() * 0.20)
 
     }
 
-    public rendim
+    public List<jugadorTitularResponseDTO> listarTitulares() {
+        List<rendimientojugador> todos = rendimientoRepository.findAll();
 
+        Map<jugador, List<rendimientojugador>> agrupadoPorJugador = new HashMap<>();
+        for ()
+    }
 
-    
 }
