@@ -1,11 +1,16 @@
 package com.entrenamiento.demo.service;
 
+import com.entrenamiento.demo.dto.jugadorPromedio;
+import com.entrenamiento.demo.dto.jugadorTitularResponseDTO;
 import com.entrenamiento.demo.dto.rendimientojugadorRequestDTO;
 import com.entrenamiento.demo.dto.rendimientojugadorResponseDTO;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -59,7 +64,44 @@ double resultado = (request.getPotenciaDeTiro() * 0.20)
         List<rendimientojugador> todos = rendimientoRepository.findAll();
 
         Map<jugador, List<rendimientojugador>> agrupadoPorJugador = new HashMap<>();
-        for ()
+        for (rendimientojugador rendimientoJugador : todos) {
+            jugador jugador = rendimientoJugador.getJugador();
+            if (!agrupadoPorJugador.containsKey(jugador)) {
+                agrupadoPorJugador.put(jugador, new ArrayList());
+            
+            }
+            agrupadoPorJugador.get(jugador).add(rendimientoJugador);
+        }
+
+    List<jugadorPromedio> elegibles = new ArrayList<>();
+    for (Map.Entry<jugador, List<rendimientojugador>> entrada : agrupadoPorJugador.entrySet()) {
+        jugador jugador = entrada.getKey();
+        List<rendimientojugador> LosRendimientojugadores = entrada.getValue();
+        
+        if (susRendimientos.Size() == 3) {
+            double suma = 0;
+            for (rendimientojugador rendimientoJugador : LosRendimientojugadores) {
+                suma = suma + rendimientoJugador.getResultado();
+            }
+            double promedio = suma / 3;
+            elegibles.add(new jugadorPromedio(jugador, promedio));
+        }
     }
+
+    elegibles.sort(Comparator.comparing(jugadorPromedio::getPromedio).reversed());
+    List<jugadorPromedio> titulares = elegibles.subList(0, Math.min(5, elegibles.size()));
+
+    List<jugadorTitularResponseDTO> response = new ArrayList<>();
+    for (jugadorPromedio jugadorPromedio : titulares) {
+        jugadorTitularResponseDTO titularDTO = new jugadorTitularResponseDTO();
+        titularDTO.setJugadorName(jugadorPromedio.getJugador().getName());
+        titularDTO.setPromedio(jugadorPromedio.getPromedio());
+        response.add(titularDTO);
+    }
+
+    return response;
+
+    }
+
 
 }
