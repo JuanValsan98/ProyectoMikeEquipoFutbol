@@ -76,11 +76,11 @@ double resultado = (request.getPotenciaDeTiro() * 0.20)
     List<jugadorPromedio> elegibles = new ArrayList<>();
     for (Map.Entry<jugador, List<rendimientojugador>> entrada : agrupadoPorJugador.entrySet()) {
         jugador jugador = entrada.getKey();
-        List<rendimientojugador> LosRendimientojugadores = entrada.getValue();
+        List<rendimientojugador> losRendimientosJugadores = entrada.getValue();
         
-        if (susRendimientos.Size() == 3) {
+        if (losRendimientosJugadores.size() == 3) {
             double suma = 0;
-            for (rendimientojugador rendimientoJugador : LosRendimientojugadores) {
+            for (rendimientojugador rendimientoJugador : losRendimientosJugadores) {
                 suma = suma + rendimientoJugador.getResultado();
             }
             double promedio = suma / 3;
