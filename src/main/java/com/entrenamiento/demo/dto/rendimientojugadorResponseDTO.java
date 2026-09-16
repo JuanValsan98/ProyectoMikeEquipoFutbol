@@ -13,5 +13,9 @@ public class rendimientojugadorResponseDTO {
     private Long pases;
 
     private Double resultado;
+
+     private Long jugadorId;
+
+    
     
 }

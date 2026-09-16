@@ -20,7 +20,7 @@ public class rendimientoService {
     private final jugadorRepository jugadorRepository;
     private final rendimientoRepository rendimientoRepository;
 
-    public rendimientoJugadorResponseDTO crearRendimiento(rendimientojugadorRequestDTO request){
+    public rendimientojugadorResponseDTO crearRendimiento(rendimientojugadorRequestDTO request){
           Optional<jugador> jugadorEncontrado = jugadorRepository.findById(request.getJugadorId());
 
 if (jugadorEncontrado.isEmpty()) {
@@ -37,15 +37,17 @@ double resultado = (request.getPotenciaDeTiro() * 0.20)
     rendimientojugador.setPotenciaDeTiro(request.getPotenciaDeTiro());
     rendimientojugador.setVelocidad(request.getVelocidad());
     rendimientojugador.setPases(request.getPases());
-    rendimientojugador.setresultado(request.getresultado());
+    rendimientojugador.setResultado(resultado);
+
+    rendimientojugador.setJugador(Jugador);
     rendimientoRepository.save(rendimientojugador);
 
     rendimientojugadorResponseDTO response = new rendimientojugadorResponseDTO();
-    rendimientojugador.setJugador(jugador);
+    response.setJugadorId(rendimientojugador.getId());
     response.setPotenciaDeTiro(rendimientojugador.getPotenciaDeTiro());
     response.setVelocidad(rendimientojugador.getVelocidad());
     response.setPases(rendimientojugador.getPases());
-    response.setresultado(rendimientojugador.getresultado());
+    response.setResultado(resultado);
     return response;
 
     }

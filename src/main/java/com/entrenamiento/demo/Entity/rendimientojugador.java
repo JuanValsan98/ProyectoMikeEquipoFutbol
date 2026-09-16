@@ -6,13 +6,15 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Entity 
-@Data 
+@Data
 public class rendimientojugador {
-    @id 
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long id;
 
@@ -24,6 +26,9 @@ public class rendimientojugador {
 
     @Column (name="Pases")
     private Long pases;
+
+    @Column (name="resultado")
+    private Double resultado;
 
     @ManyToOne 
     @JoinColumn(name ="jugador_id")

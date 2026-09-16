@@ -12,6 +12,6 @@ public class rendimientojugadorRequestDTO {
 
     private Long pases;
 
-    private Long jugadorId;
+     private Long jugadorId;
     
 }
